@@ -104,10 +104,63 @@
     a:hover{
       text-decoration: underline;
     }
+
+    .nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+  padding:12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.brand{
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--btn-bg);
+  color: var(--text);
+}
+
+.nav-links{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: var(--text);
+}
+
+.nav-links a:hover{
+  border: 1px solid var(--border);
+  text-decoration: none;
+}
+
+html { scroll-behavior: smooth; }
   </style>
 </head>
 
+ <body id="top"> 
 <body>
+  <nav class="nav">
+  <a class="brand" href="#top">SW</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+  
   <div class="container">
     <header>
       <div>
@@ -158,7 +211,7 @@
       </button>
     </header>
 
-    <div class="project">
+    <div class="project" id="about">
       <h2>About Me</h2>
       <p>
         I am a data analyst with a background in telecommunications and technical operations,
@@ -173,13 +226,22 @@
       </p>
     </div>
 
-   <div class="project">
+   <div class="project" id="projects">
   <h2>Telecom Customer Churn Analysis</h2>
   <p>
     Analyzed 7,000+ telecom customers to identify churn drivers and lifecycle risk patterns.
     Built an interactive Tableau dashboard highlighting high-risk customer segments.
   </p>
 
+     <div class="project" id="contact">
+  <h2>Contact</h2>
+  <p>
+    Email: <a href="mailto:walterssean92@gmail.com">walterssean92@gmail.com</a><br>
+    LinkedIn: <a href="https://www.linkedin.com/in/sean-walters-464aa9391" target="_blank" rel="noopener">sean-walters</a><br>
+    GitHub: <a href="https://github.com/swalt92" target="_blank" rel="noopener">swalt92</a>
+  </p>
+</div>
+     
   <p>
     <a href="https://public.tableau.com/app/profile/sean.walters/viz/TelecomCustomerChurnRevenueRiskAnalysis/Dashboard1" target="_blank" rel="noopener">
       Open in Tableau Public
