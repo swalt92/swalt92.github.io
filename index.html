@@ -164,6 +164,40 @@ html { scroll-behavior: smooth; }
   opacity: 0.85;
   transform: translateY(-2px);
 }
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+.hero {
+  text-align: center;
+  margin: 40px 0 50px;
+  padding: 30px 20px;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  
+}
+
+.hero {
+  border-bottom: 1px solid var(--border);
+}    
   </style>
 </head>
 
@@ -177,6 +211,14 @@ html { scroll-behavior: smooth; }
     <a href="#contact">Contact</a>
   </div>
 </nav>
+  
+<section class="hero">
+  <h2>Turning Operational Data into Strategic Insight</h2>
+  <p>
+    Data Analyst specializing in customer analytics, lifecycle modeling, 
+    and performance optimization using SQL, Python, and Tableau.
+  </p>
+</section>
   
   <div class="container">
     <header>
@@ -276,6 +318,10 @@ html { scroll-behavior: smooth; }
   </p>
 </div>
 
+<footer>
+  © 2026 Sean Walters | Built with GitHub Pages
+</footer>
+        
   <script>
     // 1) Apply saved theme if it exists. Otherwise use system preference.
     const savedTheme = localStorage.getItem("theme");
