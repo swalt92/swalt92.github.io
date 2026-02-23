@@ -198,6 +198,31 @@ html { scroll-behavior: smooth; }
 .hero {
   border-bottom: 1px solid var(--border);
 }    
+
+/* Tableau responsive container */
+.tableau-embed {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+}
+
+/* This controls aspect ratio (feel free to tweak) */
+.tableau-embed::before {
+  content: "";
+  display: block;
+  padding-top: 62%; /* ~16:10 feel */
+}
+
+.tableau-embed object,
+.tableau-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
   </style>
 </head>
 
@@ -308,6 +333,49 @@ html { scroll-behavior: smooth; }
     <div class='tableauPlaceholder' id='viz1771730260623' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TelecomCustomerChurnRevenueRiskAnalysis&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TelecomCustomerChurnRevenueRiskAnalysis&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TelecomCustomerChurnRevenueRiskAnalysis&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1771730260623');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1200px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1200px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='1327px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
   </div>
 </div>
+
+<section class="project" id="project-netflix-tableau">
+  <div class="project-text">
+    <h2>Netflix Content Strategy Overview</h2>
+    <p>
+      Interactive Tableau dashboard exploring engagement trends, binge intensity,
+      content mix, and global production footprint (2008–2021).
+    </p>
+
+    <a class="project-link" href="https://public.tableau.com/views/NetflixBingeRates/ContentStrategyOverview?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener">
+      View on Tableau Public →
+    </a>
+  </div>
+
+  <div class="project-visual">
+    <div class="tableau-embed" id="vizContentStrategyOverview">
+      <noscript>
+        <a href="#">
+          <img
+            alt="Content Strategy Overview"
+            src="https://public.tableau.com/static/images/Ne/NetflixBingeRates/ContentStrategyOverview/1_rss.png"
+            style="border:none;"
+          />
+        </a>
+      </noscript>
+
+      <object class="tableauViz" style="display:none;">
+        <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+        <param name="embed_code_version" value="3" />
+        <param name="site_root" value="" />
+        <param name="name" value="NetflixBingeRates/ContentStrategyOverview" />
+        <param name="tabs" value="no" />
+        <param name="toolbar" value="yes" />
+        <param name="animate_transition" value="yes" />
+        <param name="display_static_image" value="yes" />
+        <param name="display_spinner" value="yes" />
+        <param name="display_overlay" value="yes" />
+        <param name="display_count" value="yes" />
+        <param name="language" value="en-US" />
+      </object>
+    </div>
+  </div>
+</section>        
         
 <div class="project" id="contact">
      <h2>Contact</h2>
@@ -347,5 +415,40 @@ html { scroll-behavior: smooth; }
       setTheme(isDark ? "light" : "dark");
     });
   </script>
+
+  <script>
+  // Load Tableau API once
+  (function loadTableau() {
+    if (window.__tableauApiLoaded) return;
+    window.__tableauApiLoaded = true;
+
+    const s = document.createElement("script");
+    s.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+    s.async = true;
+    document.head.appendChild(s);
+  })();
+
+  // Make the embedded viz responsive instead of hardcoded 1200px
+  (function initTableauViz() {
+    const container = document.getElementById("vizContentStrategyOverview");
+    if (!container) return;
+
+    const vizObj = container.getElementsByTagName("object")[0];
+    if (!vizObj) return;
+
+    function resize() {
+      const w = container.clientWidth;
+
+      // Set height based on width (keeps it responsive)
+      const h = Math.round(w * 0.62); // match the CSS ratio
+
+      vizObj.style.width = "100%";
+      vizObj.style.height = h + "px";
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+  })();
+</script>
 </body>
 </html>
