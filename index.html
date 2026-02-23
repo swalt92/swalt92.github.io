@@ -16,6 +16,10 @@
       --shadow: 0 8px 24px rgba(0,0,0,0.08);
       --btn-bg: #ffffff;
       --btn-text: #222;
+
+      /* Netflix accent (used only in project switcher) */
+      --netflix-red: #E50914;
+      --chip-bg: rgba(0,0,0,0.06);
     }
 
     body.dark {
@@ -28,7 +32,10 @@
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
       --btn-bg: #151a21;
       --btn-text: #e7eaf0;
+      --chip-bg: rgba(255,255,255,0.06);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, sans-serif;
@@ -42,6 +49,87 @@
       margin: 0 auto;
       padding: 32px 20px 60px;
     }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin: 18px auto 0;
+      max-width: 980px;
+      padding:12px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand{
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--btn-bg);
+      color: var(--text);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      color: var(--text);
+    }
+
+    .nav-links a:hover{
+      border: 1px solid var(--border);
+      text-decoration: none;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover{
+      text-decoration: underline;
+    }
+
+
+    .social-icons{
+      display:flex;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .icon-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--btn-bg);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    .icon-link:hover{
+      opacity: 0.9;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .icon-link svg{
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
 
     header{
       display: flex;
@@ -76,6 +164,46 @@
       white-space: nowrap;
     }
 
+    .resume-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: var(--link);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .resume-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      margin: 26px auto 26px;
+      padding: 30px 20px;
+      max-width: 980px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
     .project {
       background: var(--card);
       border: 1px solid var(--border);
@@ -96,180 +224,160 @@
       color: var(--text);
     }
 
-    a {
+    /* --- Tableau switcher (single card with two selections) --- */
+    .viz-card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-top: 16px;
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+    
+    }
+
+    .viz-card__top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .viz-card__title{
+      margin: 0 0 6px 0;
+      font-size: 20px;
+    }
+
+    .viz-card__desc{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 680px;
+    }
+
+    .viz-card__controls{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .viz-tab{
+      border: 1px solid var(--border);
+      background: var(--chip-bg);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .viz-tab.active{
+      background: var(--netflix-red);
+      border-color: var(--netflix-red);
+      color: #fff;
+    }
+
+    .viz-open{
+      margin-left: auto;
+      font-weight: 700;
       color: var(--link);
-      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: var(--btn-bg);
+      white-space: nowrap;
+    }
+    .viz-open:hover{ text-decoration: none; opacity: 0.9; }
+
+    .viz-frame-wrap{
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
     }
 
-    a:hover{
-      text-decoration: underline;
+    /* 16:10-ish responsive ratio */
+    .viz-frame-wrap::before{
+      content:"";
+      display:block;
+      padding-top: 56%;
     }
 
-    .nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:18px;
-  padding:12px 14px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-}
+    .viz-frame-wrap iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
 
-.brand{
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--btn-bg);
-  color: var(--text);
-}
-
-.nav-links{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-.nav-links a{
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  color: var(--text);
-}
-
-.nav-links a:hover{
-  border: 1px solid var(--border);
-  text-decoration: none;
-}
-
-html { scroll-behavior: smooth; }
-
-.resume-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: var(--link);
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.2s ease;
-}
-
-.resume-btn:hover {
-  opacity: 0.85;
-  transform: translateY(-2px);
-}
-
-.footer {
-  margin-top: 40px;
-  padding: 20px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
-}
-
-.hero {
-  text-align: center;
-  margin: 40px 0 50px;
-  padding: 30px 20px;
-}
-
-.hero h2 {
-  font-size: 32px;
-  margin-bottom: 15px;
-  letter-spacing: -0.5px;
-}
-
-.hero p {
-  font-size: 18px;
-  color: var(--muted);
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
-  
-}
-
-.hero {
-  border-bottom: 1px solid var(--border);
-}    
+    .footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 
- <body id="top"> 
-<body>
+<body id="top">
   <nav class="nav">
-  <a class="brand" href="#top">SW</a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-  
-<section class="hero">
-  <h2>Turning Operational Data into Strategic Insight</h2>
-  <p>
-    Data Analyst specializing in customer analytics, lifecycle modeling, 
-    and performance optimization using SQL, Python, and Tableau.
-  </p>
-</section>
-  
+    <a class="brand" href="#top">SW</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h2>Turning Operational Data into Strategic Insight</h2>
+    <p>
+      Data Analyst specializing in customer analytics, lifecycle modeling,
+      and performance optimization using SQL, Python, and Tableau.
+    </p>
+  </section>
+
   <div class="container">
     <header>
       <div>
-        <header>
-  <div>
-    <h1>Sean Walters</h1>
-    <p class="subtitle">Data Analyst | SQL | Python | Tableau | Business Intelligence</p>
-    
-    <p>
-  <a href="SwRes2020_2.pdf" target="_blank" class="resume-btn">
-    📄 Download Resume
-  </a>
-</p>
+        <h1>Sean Walters</h1>
+        <p class="subtitle">Data Analyst | SQL | Python | Tableau | Business Intelligence</p>
 
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/sean-walters-464aa9391" target="_blank" aria-label="LinkedIn">
-        <!-- LinkedIn SVG -->
-        <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.035-1.849-3.035-1.851 0-2.135 1.445-2.135 2.939v5.665H9.355V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.37-1.849 3.602 0 4.268 2.37 4.268 5.455v6.285zM5.337 7.433a2.062 2.062 0 11.001-4.124 2.062 2.062 0 01-.001 4.124zM6.815 20.452H3.86V9h2.955v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.554C0 23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 22.277V1.723C24 .771 23.2 0 22.222 0z"/>
-        </svg>
-      </a>
+        <p>
+          <a href="SwRes2020_2.pdf" target="_blank" class="resume-btn" rel="noopener">
+            📄 Download Resume
+          </a>
+        </p>
 
-      <a href="https://github.com/swalt92" target="_blank" aria-label="GitHub">
-        <!-- GitHub SVG -->
-        <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577
-          0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61
-          -.546-1.386-1.333-1.756-1.333-1.756
-          -1.089-.745.084-.729.084-.729
-          1.205.084 1.84 1.237 1.84 1.237
-          1.07 1.835 2.807 1.305 3.492.998
-          .108-.775.418-1.305.762-1.605
-          -2.665-.303-5.466-1.333-5.466-5.93
-          0-1.31.47-2.381 1.236-3.221
-          -.124-.303-.536-1.523.117-3.176
-          0 0 1.008-.322 3.301 1.23
-          .957-.266 1.983-.399 3.003-.404
-          1.02.005 2.047.138 3.006.404
-          2.291-1.552 3.297-1.23 3.297-1.23
-          .655 1.653.243 2.873.12 3.176
-          .77.84 1.235 1.911 1.235 3.221
-          0 4.61-2.807 5.624-5.479 5.921
-          .43.372.823 1.102.823 2.222
-          0 1.606-.015 2.898-.015 3.293
-          0 .322.216.694.825.576C20.565 21.796 24 17.299 24 12
-          24 5.37 18.63 0 12 0z"/>
-        </svg>
-      </a>
-    </div>
-  </div>
+        
+        <div class="social-icons" aria-label="Social links">
+          <a class="icon-link" href="https://www.linkedin.com/in/sean-walters-464aa9391" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <!-- LinkedIn icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.0V9h3.112v1.561h.044c.434-.822 1.494-1.689 3.074-1.689 3.288 0 3.895 2.164 3.895 4.977v6.603zM5.337 7.433a1.814 1.814 0 1 1 0-3.628 1.814 1.814 0 0 1 0 3.628zM6.956 20.452H3.718V9h3.238v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a class="icon-link" href="https://github.com/swalt92" target="_blank" rel="noopener" aria-label="GitHub">
+            <!-- GitHub icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.73.084-.73 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.807 1.305 3.492.998.108-.776.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.123-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 3.003-.404c1.02.005 2.047.138 3.003.404 2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.242 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.804 5.625-5.475 5.92.432.372.816 1.102.816 2.222 0 1.606-.015 2.896-.015 3.286 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
 
       <button id="themeToggle" class="toggle-btn" type="button" aria-label="Toggle theme">
         🌙 Dark
@@ -291,39 +399,65 @@ html { scroll-behavior: smooth; }
       </p>
     </div>
 
-   <div class="project" id="projects">
-  <h2>Telecom Customer Churn Analysis</h2>
-  <p>
-    Analyzed 7,000+ telecom customers to identify churn drivers and lifecycle risk patterns.
-    Built an interactive Tableau dashboard highlighting high-risk customer segments.
-  </p>
-     
-  <p>
-    <a href="https://public.tableau.com/app/profile/sean.walters/viz/TelecomCustomerChurnRevenueRiskAnalysis/Dashboard1" target="_blank" rel="noopener">
-      Open in Tableau Public
-    </a>
-  </p>
+    <div class="project" id="projects">
+      <h2>Projects</h2>
+      <p>
+        Below is a single interactive Tableau viewer. Use the buttons to switch between projects
+        without breaking the page.
+      </p>
 
-  <div class="tableau-embed">
-    <div class='tableauPlaceholder' id='viz1771730260623' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TelecomCustomerChurnRevenueRiskAnalysis&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TelecomCustomerChurnRevenueRiskAnalysis&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TelecomCustomerChurnRevenueRiskAnalysis&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1771730260623');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1200px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1200px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='1327px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+      <div class="viz-card" aria-label="Tableau projects switcher">
+        <div class="viz-card__top">
+          <div>
+            <h3 class="viz-card__title" id="vizTitle">Telecom Customer Churn Analysis</h3>
+            <p class="viz-card__desc" id="vizDesc">
+              Analyzed 7,000+ telecom customers to identify churn drivers and lifecycle risk patterns.
+              Built an interactive Tableau dashboard highlighting high-risk customer segments.
+            </p>
+
+            <div class="viz-card__controls" role="tablist" aria-label="Select a Tableau project">
+              <button class="viz-tab active" type="button" data-key="telecom" role="tab" aria-selected="true">
+                Telecom Churn
+              </button>
+              <button class="viz-tab" type="button" data-key="netflix" role="tab" aria-selected="false">
+                Netflix Strategy
+              </button>
+
+              <a class="viz-open" id="vizOpen" href="#" target="_blank" rel="noopener">
+                Open in Tableau Public →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="viz-frame-wrap">
+          <iframe
+            id="vizFrame"
+            title="Tableau Dashboard"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:walterssean92@gmail.com">walterssean92@gmail.com</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/sean-walters-464aa9391" target="_blank" rel="noopener">sean-walters</a><br>
+        GitHub: <a href="https://github.com/swalt92" target="_blank" rel="noopener">swalt92</a>
+      </p>
+    </div>
+
+    <div class="footer">
+      © 2026 Sean Walters | Built with GitHub Pages
+    </div>
   </div>
-</div>
-        
-<div class="project" id="contact">
-     <h2>Contact</h2>
-  <p>
-    Email: <a href="mailto:walterssean92@gmail.com">walterssean92@gmail.com</a><br>
-    LinkedIn: <a href="https://www.linkedin.com/in/sean-walters-464aa9391" target="_blank" rel="noopener">sean-walters</a><br>
-    GitHub: <a href="https://github.com/swalt92" target="_blank" rel="noopener">swalt92</a>
-  </p>
-</div>
 
-<footer>
-  © 2026 Sean Walters | Built with GitHub Pages
-</footer>
-        
   <script>
-    // 1) Apply saved theme if it exists. Otherwise use system preference.
+    // Theme
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
@@ -332,20 +466,58 @@ html { scroll-behavior: smooth; }
       localStorage.setItem("theme", mode);
 
       const btn = document.getElementById("themeToggle");
-      if (mode === "dark") {
-        btn.textContent = "☀️ Light";
-      } else {
-        btn.textContent = "🌙 Dark";
-      }
+      btn.textContent = (mode === "dark") ? "☀️ Light" : "🌙 Dark";
     };
 
     setTheme(savedTheme ? savedTheme : (prefersDark ? "dark" : "light"));
 
-    // 2) Toggle on click
     document.getElementById("themeToggle").addEventListener("click", () => {
       const isDark = document.body.classList.contains("dark");
       setTheme(isDark ? "light" : "dark");
     });
+
+    // Tableau project switcher (iframe-based; avoids Tableau embed scripts that can break pages)
+    const PROJECTS = {
+      telecom: {
+        title: "Telecom Customer Churn Analysis",
+        desc: "Analyzed 7,000+ telecom customers to identify churn drivers and lifecycle risk patterns. Built an interactive Tableau dashboard highlighting high-risk customer segments.",
+        openUrl: "https://public.tableau.com/app/profile/sean.walters/viz/TelecomCustomerChurnRevenueRiskAnalysis/Dashboard1",
+        embedUrl: "https://public.tableau.com/views/TelecomCustomerChurnRevenueRiskAnalysis/Dashboard1?:showVizHome=no&:embed=true&:toolbar=n&:tabs=n"
+      },
+      netflix: {
+        title: "Netflix Content Strategy Overview",
+        desc: "Interactive Tableau dashboard exploring binge engagement, content mix over time, and global production footprint (2008–2021).",
+        openUrl: "https://public.tableau.com/views/NetflixBingeRates/ContentStrategyOverview?:language=en-US&:display_count=n&:origin=viz_share_link",
+        embedUrl: "https://public.tableau.com/views/NetflixBingeRates/ContentStrategyOverview?:showVizHome=no&:embed=true&:toolbar=n&:tabs=n"
+      }
+    };
+
+    const titleEl = document.getElementById("vizTitle");
+    const descEl = document.getElementById("vizDesc");
+    const frameEl = document.getElementById("vizFrame");
+    const openEl  = document.getElementById("vizOpen");
+    const tabs = Array.from(document.querySelectorAll(".viz-tab"));
+
+    function setActive(key){
+      const p = PROJECTS[key];
+      if(!p) return;
+
+      titleEl.textContent = p.title;
+      descEl.textContent = p.desc;
+      openEl.href = p.openUrl;
+      frameEl.src = p.embedUrl;
+
+      tabs.forEach(btn => {
+        const isOn = btn.dataset.key === key;
+        btn.classList.toggle("active", isOn);
+        btn.setAttribute("aria-selected", isOn ? "true" : "false");
+      });
+    }
+
+    tabs.forEach(btn => btn.addEventListener("click", () => setActive(btn.dataset.key)));
+
+    // Default project
+    setActive("telecom");
   </script>
 </body>
-      </html>
+</html>
