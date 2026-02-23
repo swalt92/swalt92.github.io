@@ -198,31 +198,6 @@ html { scroll-behavior: smooth; }
 .hero {
   border-bottom: 1px solid var(--border);
 }    
-
-/* Tableau responsive container */
-.tableau-embed {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.55);
-}
-
-/* This controls aspect ratio (feel free to tweak) */
-.tableau-embed::before {
-  content: "";
-  display: block;
-  padding-top: 62%; /* ~16:10 feel */
-}
-
-.tableau-embed object,
-.tableau-embed iframe {
-  position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-}
   </style>
 </head>
 
